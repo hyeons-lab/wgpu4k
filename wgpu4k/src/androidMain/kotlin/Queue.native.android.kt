@@ -1,5 +1,6 @@
 package io.ygdrasil.webgpu
 
+import com.sun.jna.Native
 import com.sun.jna.Pointer
 import ffi.MemoryAllocator
 import ffi.NativeAddress
@@ -39,13 +40,8 @@ internal actual inline fun Queue.queueWriteTexture(
     )
 }
 
-private fun ByteBuffer.getAddress() = try {
-    val addressMethod = ByteBuffer::class.java.getDeclaredMethod("address")
-    addressMethod.isAccessible = true
-    (addressMethod.invoke(this) as Long?)!!
-} catch (e: Exception) {
-    throw RuntimeException("Failed to get ByteBuffer address", e)
-}.toULong()
+private fun ByteBuffer.getAddress(): ULong =
+    Pointer.nativeValue(Native.getDirectBufferPointer(this)).toULong()
 
 
 private fun ULong.toNativeAddress(): NativeAddress? = takeIf { it != 0uL }
