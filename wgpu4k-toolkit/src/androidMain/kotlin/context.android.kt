@@ -10,7 +10,7 @@ suspend fun androidContextRenderer(
     deferredRendering: Boolean = false,
     onUncapturedError: GPUUncapturedErrorCallback? = null
 ): AndroidContext {
-    val wgpu = WGPU.createInstance(WGPUInstanceBackend.Vulkan) ?: error("Can't create WGPU instance")
+    val wgpu = WGPU.createInstance() ?: error("Can't create WGPU instance")
     val window = Helper.nativeWindowFromSurface(surfaceHolder.surface)
         .let { NativeAddress(it) }
     val nativeSurface = wgpu.getSurfaceFromAndroidWindow(window) ?: error("Can't create Surface")

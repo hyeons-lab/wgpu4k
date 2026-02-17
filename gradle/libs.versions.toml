@@ -15,7 +15,7 @@ glfw-native = "0.0.2"
 
 # WebGPU
 wgpu4k-native = "v27.0.4-SNAPSHOT"
-webgpu-ktypes = "0.0.9"
+webgpu-ktypes = "0.0.9-SNAPSHOT"
 
 # Logging
 kotlin-logging = "7.0.13"
@@ -44,9 +44,9 @@ glfw-native = { module = "io.ygdrasil:glfw-native", version.ref = "glfw-native" 
 android-native-helper = { module = "io.ygdrasil:android-native-helper", version.ref = "android-native-helper" }
 
 # WebGPU
-webgpu-descriptors = { module = "io.ygdrasil:webgpu-ktypes-descriptors", version.ref = "webgpu-ktypes" }
-webgpu-types = { module = "io.ygdrasil:webgpu-ktypes", version.ref = "webgpu-ktypes" }
-webgpu-web = { module = "io.ygdrasil:webgpu-ktypes-web", version.ref = "webgpu-ktypes" }
+webgpu-descriptors = { module = "com.hyeons-lab:webgpu-ktypes-descriptors", version.ref = "webgpu-ktypes" }
+webgpu-types = { module = "com.hyeons-lab:webgpu-ktypes", version.ref = "webgpu-ktypes" }
+webgpu-web = { module = "com.hyeons-lab:webgpu-ktypes-web", version.ref = "webgpu-ktypes" }
 wgpu4k-native = { module = "com.hyeons-lab:wgpu4k-native", version.ref = "wgpu4k-native" }
 wgpu-specs = { module = "com.hyeons-lab:wgpu4k-native-specs-jvm", version.ref = "wgpu4k-native" }
 
