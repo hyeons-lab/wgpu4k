@@ -81,9 +81,14 @@ kotlin {
         }
 
 
-        macosMain.get().dependsOn(desktopNativeMain)
         linuxMain.get().dependsOn(desktopNativeMain)
         mingwMain.get().dependsOn(desktopNativeMain)
+
+        macosMain {
+            dependencies {
+                api(libs.glfw.native)
+            }
+        }
 
 
         commonTest {
