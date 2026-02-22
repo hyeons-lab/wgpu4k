@@ -34,10 +34,13 @@ class NativeSurface(
     fun getCurrentTexture(): SurfaceTexture = memoryScope { scope ->
         WGPUSurfaceTexture.allocate(scope).let { surfaceTexture ->
             wgpuSurfaceGetCurrentTexture(handler, surfaceTexture)
-            surfaceTexture.status
+            val status = SurfaceTextureStatus.of(surfaceTexture.status) ?: error("fail to get status")
+            if (status == SurfaceTextureStatus.outdated) {
+                throw SurfaceOutdatedException("Surface is outdated — reconfigure before the next frame")
+            }
             SurfaceTexture(
                 Texture(surfaceTexture.texture ?: error("fail to get texture from surface"), ""),
-                SurfaceTextureStatus.of(surfaceTexture.status) ?: error("fail to get status"),
+                status,
             )
         }
     }
